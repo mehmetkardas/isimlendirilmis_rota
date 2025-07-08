@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Greenpage extends StatelessWidget {
-  const Greenpage({super.key});
+  final String ad;
+  const Greenpage({super.key, required this.ad});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,11 @@ class Greenpage extends StatelessWidget {
           children: [
             Text(
               "Yeşil Sayfa",
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            SizedBox(height: 25),
+            Text(
+              "Benim adım : $ad",
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],

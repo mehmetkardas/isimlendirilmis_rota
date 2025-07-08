@@ -27,5 +27,58 @@ onUnknownRoute: (settings) {
         return MaterialPageRoute(builder: (context) => HataSayfasi());
       },
 
+OnGenerateRoute:
+Yine MaterialApp içerisinde bulunur.
+onGenerateRoute: adında bir parametresi vardır.
+
+Bunun önceki konudan farkı sadece sayfa açma işlemini değil aynı zamanda veri aktarımı yapmak içinde
+kullanabildiği için daha fazla işimize yarar.
+
+Ben MaterialAppin içini doldurmak istemiyorum.O yüzden farklı bir dosya oluşturup orda bu işlemi
+tamamlayıp materialAppte çağırıcaö
+Öncelikle route_generator.dart adında bir dosya oluşturalım.
+
+class RouteGenerator {
+  static Route<dynamic>? routeGenerator(RouteSettings settings) {
+    switch (settings.name) {
+      case "/":
+        return MaterialPageRoute(builder: (context) => Redpage());
+
+      case "/yellowPage":
+        return MaterialPageRoute(builder: (context) => Yellowpage());
+
+      case "/greenPage":
+        return MaterialPageRoute(builder: (context) => Greenpage());
+
+      default:
+        return MaterialPageRoute(builder: (context) => HataSayfasi());
+    }
+  }
+}
+
+MaterialAppde onGenerate olan yere şu şekilde çağırıyoruz.
+ onGenerateRoute: RouteGenerator.routeGenerator,
+
+ route ile aynı anda çağırılamaz hata alırsınız ya o ya bu
+
+
+ OnGenerateRoue ile kurucu yardımıyla veri gönderme
+
+ 1)Sayfaya gidecek olan butonun olduğu sayfada veri oluşturulur.
+ 2)Verinin gideceği sayfada kurucusunda alınacak veri için hazırlık yapılır.
+
+ 3)Rota yönetiminin olduğu sayfada(route_generator) veri verinin gideceği sayfaya gönderilir.
+ case "/greenPage":
+        String name = settings.arguments as String;
+
+        return MaterialPageRoute(builder: (context) => Greenpage(ad: name));
+
+4)Anasayfadaki veriyi gönderen butona şu yazılır
+                Navigator.of(context).pushNamed("/greenPage", arguments: name);
+
+5)Sonuç olarak veri gönderilir.
+
+
+
 
 */

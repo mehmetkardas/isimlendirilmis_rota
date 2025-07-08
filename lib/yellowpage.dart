@@ -20,15 +20,6 @@ class Yellowpage extends StatelessWidget {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             SizedBox(height: 20),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(),
-              ),
-              onPressed: () {},
-              child: Text("Yeşil Sayfaya git"),
-            ),
           ],
         ),
       ),

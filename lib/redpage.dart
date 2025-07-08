@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 
-class Redpage extends StatelessWidget {
-  const Redpage({super.key});
+class Redpage extends StatefulWidget {
+  Redpage({super.key});
+
+  @override
+  State<Redpage> createState() => _RedpageState();
+}
+
+class _RedpageState extends State<Redpage> {
+  late String name;
+  @override
+  void initState() {
+    super.initState();
+    name = "Mehmet";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +51,7 @@ class Redpage extends StatelessWidget {
                 shape: RoundedRectangleBorder(),
               ),
               onPressed: () {
-                Navigator.of(context).pushNamed("/greenPage2");
+                Navigator.of(context).pushNamed("/greenPage", arguments: name);
               },
               child: Text("Yeşil Sayfaya git"),
             ),
